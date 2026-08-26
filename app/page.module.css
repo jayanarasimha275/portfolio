@@ -1,0 +1,98 @@
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 25px 60px;
+  background: white;
+  z-index: 100;
+}
+
+.menuBtn {
+  border: none;
+  background: none;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 100px;
+}
+
+.label {
+  letter-spacing: 5px;
+  color: gray;
+}
+
+.left h1 {
+  font-size: 90px;
+  line-height: 1.1;
+  margin: 20px 0;
+}
+
+.left h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.left p {
+  font-size: 18px;
+  color: #666;
+  max-width: 500px;
+}
+
+.buttons {
+  margin-top: 40px;
+  display: flex;
+  gap: 15px;
+}
+
+.buttons button {
+  padding: 15px 30px;
+  border: 1px solid black;
+  cursor: pointer;
+  background: white;
+}
+
+.right {
+  position: relative;
+  min-height: 100vh;
+}
+
+.image {
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .left {
+    padding: 120px 30px 50px;
+  }
+
+  .left h1 {
+    font-size: 50px;
+  }
+
+  .right {
+    min-height: 500px;
+  }
+}

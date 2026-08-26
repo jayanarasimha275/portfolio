@@ -1,0 +1,73 @@
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px;
+}
+
+.label {
+  letter-spacing: 8px;
+  color: gray;
+  padding:10px;
+  font-size: 25px;
+}
+
+.left h1 {
+  font-size: 45px;
+  line-height: 1.05;
+  margin: 20px 0;
+}
+
+.left h3 {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.left p {
+  max-width: 500px;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.right {
+  position: relative;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.image {
+  object-fit: contain;
+  object-position: center;
+  padding: 20px;
+  filter: grayscale(100%);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .left {
+    padding: 120px 30px 50px;
+  }
+
+  .left h1 {
+    font-size: 4rem;
+  }
+
+  .right {
+    min-height: 500px;
+  }
+}

@@ -1,0 +1,41 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 25px 50px;
+  background: white;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.menuBtn {
+  border: none;
+  background: none;
+  font-size: 40px;
+  cursor: pointer;
+
+  transition: transform 0.4s ease;
+}
+
+.menuBtn:hover {
+  transform: rotate(90deg);
+}
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoSection h2 {
+  margin: 0;
+}

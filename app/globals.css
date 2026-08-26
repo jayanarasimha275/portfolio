@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f7f7;
+  color: #111;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 25px 50px;
+  background: white;
+  z-index: 1000;
+}
+
+.menuBtn {
+  border: none;
+  background: none;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+
+  background: #111;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 2000;
+}
+
+.menuLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.menuLinks a {
+  color: white;
+  font-size: 4rem;
+  text-decoration: none;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+
+  border: none;
+  background: none;
+  color: white;
+
+  font-size: 40px;
+  cursor: pointer;
+}
