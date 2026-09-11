@@ -1,14 +1,14 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: #fff;
+  background: var(--moss-dark);
   z-index: 999;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  animation: menuOpen 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: menuOpen 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes menuOpen {
@@ -26,18 +26,19 @@
 .nav {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .nav a {
-  font-size: 4rem;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 14vw, 5rem);
   text-decoration: none;
-  color: black;
+  color: var(--paper);
 
   opacity: 0;
   transform: translateY(30px);
 
-  animation: fadeInUp 0.6s forwards;
+  animation: fadeInUp 0.45s forwards;
 }
 
 .nav a:nth-child(1) {
@@ -61,11 +62,12 @@
 
 .closeBtn {
   position: absolute;
-  top: 40px;
-  right: 50px;
+  top: 28px;
+  right: 32px;
 
   border: none;
-  background: none;
-  font-size: 40px;
+  background: transparent;
+  color: var(--paper);
+  font-size: 32px;
   cursor: pointer;
 }

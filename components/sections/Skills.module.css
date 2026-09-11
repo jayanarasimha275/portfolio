@@ -1,0 +1,46 @@
+.skills {
+  padding: 120px max(5vw, 32px);
+  border-top: 1px solid var(--line);
+}
+
+.header {
+  max-width: 620px;
+  margin-bottom: 56px;
+}
+
+.kicker {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--clay);
+  font: 500 0.72rem/1.4 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skills h2 {
+  margin: 0 0 16px;
+  font: 600 clamp(2.1rem, 4.2vw, 3.2rem) / 1 var(--font-display);
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.intro {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.list {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+@media (max-width: 760px) {
+  .skills {
+    padding: 90px 24px;
+  }
+}

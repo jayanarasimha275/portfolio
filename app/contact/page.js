@@ -2,6 +2,8 @@
 
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import styles from "./Contact.module.css";
 
 
@@ -26,14 +28,14 @@ export default function ContactPage() {
           form.current.reset();
         },
         (error) => {
-          console.log(error);
+          console.error("Email delivery failed:", error);
           alert("Failed to send message.");
         }
       );
   };
 
   return (
-    <section id="contact" className={styles.contact}>
+    <><Navbar /><main><section id="contact" className={styles.contact}>
       <div className={styles.container}>
 
         <div className={styles.left}>
@@ -42,11 +44,11 @@ export default function ContactPage() {
           </span>
 
           <h2 className={styles.title}>
-            Let's Build Something Amazing Together
+            Let&rsquo;s Build Something Amazing Together
           </h2>
 
           <p className={styles.description}>
-            I'm Jaya Narasimha, a passionate Full Stack Developer.
+            I&rsquo;m Jaya Narasimha, a passionate Full Stack Developer.
             Feel free to contact me for internships, projects,
             freelance work, or collaborations.
           </p>
@@ -69,15 +71,15 @@ export default function ContactPage() {
           </div>
 
           <div className={styles.socials}>
-            <a href="https://github.com/jayanarasimha275" target="_blank">
+            <a href="https://github.com/jayanarasimha275" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
 
-            <a href="https://www.linkedin.com/in/jaya-narasimha-palla-a58699391/" target="_blank">
+            <a href="https://www.linkedin.com/in/jaya-narasimha-palla-a58699391/" target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
 
-            <a href="https://instagram.com/" target="_blank">
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
           </div>
@@ -123,6 +125,6 @@ export default function ContactPage() {
         </div>
 
       </div>
-    </section>
+    </section></main><Footer /></>
   )
 }

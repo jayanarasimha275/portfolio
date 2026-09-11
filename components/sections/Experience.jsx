@@ -1,36 +1,27 @@
 import experience from "@/data/experience";
+import styles from "./Experience.module.css";
 
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      className="py-24 px-10 lg:px-20"
-    >
-      <h2 className="text-5xl font-bold mb-12">
-        Experience
-      </h2>
+    <section id="experience" className={styles.experience} aria-labelledby="experience-title">
+      <div className={styles.header}>
+        <span className={styles.kicker}>Field Note / 03</span>
+        <h2 id="experience-title">Experience</h2>
+      </div>
 
-      <div className="space-y-8">
-
+      <div className={styles.list}>
         {experience.map((item) => (
-          <div
-            key={item.company}
-            className="border-l-4 border-purple-500 pl-6"
-          >
-            <h3 className="text-2xl font-semibold">
-              {item.role}
-            </h3>
-
-            <p className="text-purple-600">
-              {item.company}
-            </p>
-
-            <p className="text-gray-500">
-              {item.duration}
-            </p>
-          </div>
+          <article key={item.id} className={styles.item}>
+            <div className={styles.meta}>
+              <span className={styles.duration}>{item.duration}</span>
+            </div>
+            <div className={styles.body}>
+              <h3 className={styles.role}>{item.role}</h3>
+              <p className={styles.company}>{item.company}</p>
+              <p className={styles.description}>{item.description}</p>
+            </div>
+          </article>
         ))}
-
       </div>
     </section>
   );

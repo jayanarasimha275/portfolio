@@ -1,0 +1,6 @@
+.footer { background: var(--moss-dark); color: var(--paper); padding: 64px 40px 26px; }
+.top { display: grid; grid-template-columns: 1.45fr 1fr 1fr; gap: 36px; max-width: 1180px; margin: 0 auto; padding-bottom: 42px; border-bottom: 1px solid rgba(244,241,232,.22); }
+.brand { max-width: 360px; }.name { font: 600 1.55rem var(--font-display); letter-spacing: -.03em; }.tagline { margin: 10px 0 0; color: rgba(244,241,232,.68); font-size: .85rem; line-height: 1.6; }
+.column { display: flex; flex-direction: column; gap: 11px; }.heading { margin-bottom: 6px; color: var(--sun); font: .68rem var(--font-mono); letter-spacing: .08em; }.link { width: fit-content; color: rgba(244,241,232,.8); font-size: .84rem; }.link:hover { color: var(--sun); }
+.bottom { display: flex; justify-content: space-between; gap: 16px; max-width: 1180px; margin: 0 auto; padding-top: 24px; color: rgba(244,241,232,.55); font: .68rem var(--font-mono); }
+@media (max-width: 700px) { .footer { padding: 48px 24px 24px; }.top { grid-template-columns: 1fr; gap: 30px; }.bottom { flex-direction: column; } }

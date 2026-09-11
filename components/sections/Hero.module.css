@@ -1,73 +1,23 @@
-.hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 100px;
-}
-
-.label {
-  letter-spacing: 8px;
-  color: gray;
-  padding:10px;
-  font-size: 25px;
-}
-
-.left h1 {
-  font-size: 45px;
-  line-height: 1.05;
-  margin: 20px 0;
-}
-
-.left h3 {
-  font-size: 25px;
-  margin-bottom: 20px;
-}
-
-.left p {
-  max-width: 500px;
-  color: #666;
-  font-size: 1.2rem;
-}
-
-.buttons {
-  display: flex;
-  gap: 15px;
-  margin-top: 40px;
-}
-
-.right {
-  position: relative;
-  min-height: 100vh;
-  background: #f5f5f5;
-}
-
-.image {
-  object-fit: contain;
-  object-position: center;
-  padding: 20px;
-  filter: grayscale(100%);
-}
-
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
-  .left {
-    padding: 120px 30px 50px;
-  }
-
-  .left h1 {
-    font-size: 4rem;
-  }
-
-  .right {
-    min-height: 500px;
-  }
-}
+.hero { position: relative; isolation: isolate; min-height: 100svh; padding: 150px max(5vw, 32px) 48px; display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(280px, .76fr); align-items: center; gap: 7vw; overflow: hidden; }
+.grid { position: absolute; inset: 0; z-index: -2; background-image: linear-gradient(to right, transparent 0, transparent calc(25% - .5px), rgba(23,32,29,.07) 25%, transparent calc(25% + .5px)), linear-gradient(to bottom, transparent 0, transparent calc(50% - .5px), rgba(23,32,29,.07) 50%, transparent calc(50% + .5px)); pointer-events: none; }
+.hero::after { content: ""; position: absolute; z-index: -1; width: min(48vw, 620px); aspect-ratio: 1; border-radius: 50%; right: -8vw; top: 16%; background: var(--sun); opacity: .5; }
+.content { max-width: 720px; }
+.noteMeta { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); color: var(--moss); font: 500 .7rem/1.4 var(--font-mono); letter-spacing: .09em; text-transform: uppercase; }
+.kicker { margin: 64px 0 14px; color: var(--clay); font: 500 .72rem/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.content h1 { max-width: 680px; margin: 0; font: 600 clamp(3.4rem, 7.2vw, 7rem)/.93 var(--font-display); letter-spacing: -.065em; }
+.role { min-height: 2em; margin: 24px 0 20px; color: var(--moss); font: 500 clamp(1.05rem, 1.75vw, 1.45rem)/1.4 var(--font-mono); }
+.intro { max-width: 520px; margin: 0; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.75; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.primary, .secondary { display: inline-flex; align-items: center; gap: 14px; min-height: 50px; padding: 12px 18px; border: 1px solid var(--ink); font-size: .86rem; font-weight: 700; transition: transform .2s ease, background .2s ease, color .2s ease; }
+.primary { background: var(--ink); color: var(--paper); }
+.secondary { background: transparent; }
+.primary:hover, .secondary:hover { transform: translateY(-3px); }
+.primary:hover { background: var(--moss); border-color: var(--moss); }
+.secondary:hover { background: var(--paper-bright); }
+.portraitBlock { position: relative; width: min(100%, 470px); justify-self: end; }
+.photoFrame { position: relative; aspect-ratio: .84; overflow: hidden; background: var(--paper-bright); border: 1px solid var(--line); }
+.photoFrame::before { content: ""; position: absolute; inset: 14px; z-index: 1; border: 1px solid rgba(23,21,31,.12); pointer-events: none; }
+.photo { object-fit: cover; object-position: top center; }
+.portraitCaption { max-width: 290px; margin: 16px 0 0 auto; color: var(--ink-soft); font: .72rem/1.6 var(--font-mono); }
+.scrollCue { position: absolute; bottom: 34px; left: max(5vw, 32px); display: flex; gap: 12px; color: var(--ink-soft); font: .7rem var(--font-mono); text-transform: uppercase; letter-spacing: .07em; }
+@media (max-width: 760px) { .hero { min-height: auto; padding: 112px 24px 70px; grid-template-columns: 1fr; gap: 44px; } .kicker { margin-top: 42px; } .portraitBlock { width: min(82vw, 400px); justify-self: start; } .portraitCaption { margin-left: 0; } .scrollCue { display: none; } .hero::after { width: 75vw; top: 55%; right: -24vw; } }

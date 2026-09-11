@@ -1,0 +1,79 @@
+.experience {
+  padding: 120px max(5vw, 32px);
+  border-top: 1px solid var(--line);
+}
+
+.header {
+  margin-bottom: 56px;
+}
+
+.kicker {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--clay);
+  font: 500 0.72rem/1.4 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.experience h2 {
+  margin: 0;
+  font: 600 clamp(2.1rem, 4.2vw, 3.2rem) / 1 var(--font-display);
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.list {
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  padding: 36px 0;
+  border-top: 1px solid var(--line);
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.duration {
+  color: var(--moss);
+  font: 500 0.8rem/1.5 var(--font-mono);
+}
+
+.role {
+  margin: 0 0 6px;
+  font: 600 1.5rem/1.15 var(--font-display);
+  color: var(--ink);
+}
+
+.company {
+  margin: 0 0 14px;
+  color: var(--clay);
+  font: 500 0.9rem/1.4 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.description {
+  margin: 0;
+  max-width: 560px;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .experience {
+    padding: 90px 24px;
+  }
+  .item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

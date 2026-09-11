@@ -1,125 +1,134 @@
 "use client";
-
-import { useRef } from "react";
-import emailjs from "@emailjs/browser";
+import { useState } from "react";
+import Reveal from "../ui/Reveal";
 import styles from "./Contact.module.css";
 
+const socials = [
+  { label: "GitHub", href: "https://github.com/jayanarasimha275" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/jaya-narasimha-palla-a58699391/",
+  },
+];
+
 export default function Contact() {
-  const form = useRef();
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle");
 
-  const sendEmail = (e) => {
+  function handleChange(e) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_n5j17rf",
-        "template_d5g48aa",
-        form.current,
-        "oJyJ6L08EVGLuR_Xv"
-      )
-      .then(
-        () => {
-          alert("Message sent successfully!");
-          form.current.reset();
-        },
-        (error) => {
-          console.log(error);
-          alert("Failed to send message.");
-        }
-      );
-  };
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
+  }
 
   return (
-    <section id="contact" className={styles.contact}>
-      <div className={styles.container}>
+    <section className={styles.contact} id="contact">
+      <Reveal className={styles.left}>
+        <span className={styles.eyebrow}>
+          <i className={styles.dot} />
+          CONNECT
+        </span>
+        <h2 className={styles.heading}>Let&rsquo;s work together</h2>
+        <p className={styles.paragraph}>
+          Have a project in mind or just want to say hi? Send a message and
+          I&rsquo;ll get back to you.
+        </p>
 
-        <div className={styles.left}>
-          <span className={styles.subtitle}>
-            GET IN TOUCH
-          </span>
+        <a href="mailto:jayanarasimha232@gmail.com" className={styles.email}>
+          jayanarasimha232@gmail.com
+        </a>
 
-          <h2 className={styles.title}>
-            Let's Build Something Amazing Together
-          </h2>
-
-          <p className={styles.description}>
-            I'm Jaya Narasimha, a passionate Full Stack Developer.
-            Feel free to contact me for internships, projects,
-            freelance work, or collaborations.
-          </p>
-
-          <div className={styles.info}>
-            <div className={styles.card}>
-              <h4>Email</h4>
-              <p>jayanarasimha232@gmail.com</p>
-            </div>
-
-            <div className={styles.card}>
-              <h4>Phone</h4>
-              <p>+91 81251 59953</p>
-            </div>
-
-            <div className={styles.card}>
-              <h4>Location</h4>
-              <p>Kadapa,Andhra Pradesh, India</p>
-            </div>
-          </div>
-
-          <div className={styles.socials}>
-            <a href="https://github.com/jayanarasimha275" target="_blank">
-              GitHub
+        <div className={styles.socials}>
+          {socials.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+            >
+              {social.label}
             </a>
-
-            <a href="https://www.linkedin.com/in/jaya-narasimha-palla-a58699391/" target="_blank">
-              LinkedIn
-            </a>
-
-            <a href="https://instagram.com/" target="_blank">
-              Instagram
-            </a>
-          </div>
+          ))}
         </div>
+      </Reveal>
 
-        <div className={styles.right}>
-          <form
-            ref={form}
-            onSubmit={sendEmail}
-            className={styles.form}
-          >
+      <Reveal delay={150}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <div className={styles.field}>
+            <label htmlFor="name">Name</label>
             <input
+              id="name"
+              name="name"
               type="text"
-              name="user_name"
-              placeholder="Your Name"
               required
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Your name"
             />
+          </div>
 
+          <div className={styles.field}>
+            <label htmlFor="email">Email</label>
             <input
+              id="email"
+              name="email"
               type="email"
-              name="user_email"
-              placeholder="Your Email"
               required
+              value={form.email}
+              onChange={handleChange}
+              placeholder="you@example.com"
             />
+          </div>
 
-            <input
-              type="text"
-              name="subject"
-              placeholder="Subject"
-            />
-
+          <div className={styles.field}>
+            <label htmlFor="message">Message</label>
             <textarea
+              id="message"
               name="message"
-              rows="6"
-              placeholder="Write your message..."
               required
+              rows={5}
+              value={form.message}
+              onChange={handleChange}
+              placeholder="Tell me about your project..."
             />
+          </div>
 
-            <button type="submit">
-              Send Message
-            </button>
-          </form>
-        </div>
+          <button
+            type="submit"
+            className={styles.submitBtn}
+            disabled={status === "sending"}
+          >
+            {status === "sending" ? "Sending..." : "Send Message"}
+          </button>
 
-      </div>
+          {status === "sent" && (
+            <p className={styles.successMsg} role="status">
+              Message sent — I&rsquo;ll reply soon!
+            </p>
+          )}
+          {status === "error" && (
+            <p className={styles.errorMsg} role="alert">
+              Something went wrong. Please email me directly instead.
+            </p>
+          )}
+        </form>
+      </Reveal>
     </section>
   );
 }
